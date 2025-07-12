@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("fullName", employee.getFullName());
                     session.setAttribute("ssn", employee.getSsn());
                     
-                        response.sendRedirect(request.getContextPath() + "/rep/dashboard");
+                    response.sendRedirect(request.getContextPath() + "/rep/dashboard");
                 } else {
                     request.setAttribute("error", "Invalid username or password");
                     request.getRequestDispatcher("/login.jsp").forward(request, response);
