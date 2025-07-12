@@ -1,0 +1,70 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.btn {
+    border-radius: 6px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-top: none;
+}
+
+.alert {
+    border-radius: 6px;
+}
+
+.bg-railway-primary {
+    background-color: #2C3E50 !important;
+}
+
+.text-railway-primary {
+    color: #2C3E50 !important;
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.footer {
+    margin-top: auto;
+    padding: 1rem 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.table-responsive {
+    border-radius: 6px;
+}
+
+.badge {
+    font-size: 0.75em;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+} 

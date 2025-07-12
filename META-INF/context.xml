@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/railway"
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxTotal="20"
+              maxIdle="5"
+              maxWaitMillis="10000"
+              username="railway_app"
+              password="railway123"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/railway?useSSL=false&amp;serverTimezone=UTC&amp;autoReconnect=true&amp;failOverReadOnly=false"
+              testOnBorrow="true"
+              testOnReturn="false"
+              testWhileIdle="true"
+              validationQuery="SELECT 1"
+              validationQueryTimeout="30"
+              timeBetweenEvictionRunsMillis="30000"
+              minEvictableIdleTimeMillis="60000"
+              maxConnLifetimeMillis="1800000"
+              removeAbandonedOnBorrow="true"
+              removeAbandonedOnMaintenance="true"
+              removeAbandonedTimeout="300"
+              logAbandoned="true" />
+</Context> 

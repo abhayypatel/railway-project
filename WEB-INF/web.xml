@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <display-name>Railway Project System</display-name>
+    <description>Online Railway Project System using JSP/Servlets</description>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+            <secure>false</secure>
+        </cookie-config>
+    </session-config>
+
+    <resource-ref>
+        <description>MySQL DataSource for Railway DB</description>
+        <res-ref-name>jdbc/railway</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.jsp</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500.jsp</location>
+    </error-page>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.railway.servlet.auth.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/customer/*</url-pattern>
+        <url-pattern>/rep/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.railway.servlet.auth.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.railway.servlet.auth.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.railway.servlet.auth.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerDashboardServlet</servlet-name>
+        <servlet-class>com.railway.servlet.customer.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardServlet</servlet-name>
+        <url-pattern>/customer/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReservationServlet</servlet-name>
+        <servlet-class>com.railway.servlet.customer.ReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReservationServlet</servlet-name>
+        <url-pattern>/customer/reservations</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MakeReservationServlet</servlet-name>
+        <servlet-class>com.railway.servlet.customer.MakeReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MakeReservationServlet</servlet-name>
+        <url-pattern>/customer/make-reservation</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchScheduleServlet</servlet-name>
+        <servlet-class>com.railway.servlet.customer.SearchScheduleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchScheduleServlet</servlet-name>
+        <url-pattern>/customer/search</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerQuestionServlet</servlet-name>
+        <servlet-class>com.railway.servlet.customer.CustomerQuestionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerQuestionServlet</servlet-name>
+        <url-pattern>/customer/questions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <servlet-class>com.railway.servlet.admin.AdminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ScheduleManagementServlet</servlet-name>
+        <servlet-class>com.railway.servlet.admin.ScheduleManagementServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScheduleManagementServlet</servlet-name>
+        <url-pattern>/admin/schedules</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReportsServlet</servlet-name>
+        <servlet-class>com.railway.servlet.admin.ReportsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReportsServlet</servlet-name>
+        <url-pattern>/admin/reports</url-pattern>
+    </servlet-mapping>
+
+        <servlet>
+        <servlet-name>EmployeeManagementServlet</servlet-name>
+        <servlet-class>com.railway.servlet.admin.EmployeeManagementServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EmployeeManagementServlet</servlet-name>
+        <url-pattern>/admin/employees</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminCustomerServiceServlet</servlet-name>
+        <servlet-class>com.railway.servlet.admin.AdminCustomerServiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminCustomerServiceServlet</servlet-name>
+        <url-pattern>/admin/customer-service</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RepDashboardServlet</servlet-name>
+        <servlet-class>com.railway.servlet.rep.RepDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RepDashboardServlet</servlet-name>
+        <url-pattern>/rep/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RepCustomerServiceServlet</servlet-name>
+        <servlet-class>com.railway.servlet.rep.CustomerServiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RepCustomerServiceServlet</servlet-name>
+        <url-pattern>/rep/customer-service</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RepScheduleServlet</servlet-name>
+        <servlet-class>com.railway.servlet.rep.RepScheduleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RepScheduleServlet</servlet-name>
+        <url-pattern>/rep/schedules</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RepReportsServlet</servlet-name>
+        <servlet-class>com.railway.servlet.rep.RepReportsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RepReportsServlet</servlet-name>
+        <url-pattern>/rep/reports</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestDBServlet</servlet-name>
+        <servlet-class>com.railway.servlet.TestDBServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestDBServlet</servlet-name>
+        <url-pattern>/test-db</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DiagnosticServlet</servlet-name>
+        <servlet-class>com.railway.servlet.DiagnosticServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DiagnosticServlet</servlet-name>
+        <url-pattern>/diagnostic</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>com.railway.servlet.TestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+</web-app>
