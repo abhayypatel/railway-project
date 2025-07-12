@@ -27,7 +27,7 @@ public class CustomerServiceServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         String userType = (String) session.getAttribute("userType");
-        String empUser = (String) session.getAttribute("username");
+        String empSSN = (String) session.getAttribute("ssn");
         
         if (!"EMP_REP".equals(userType) && !"ADMIN".equals(userType)) {
             response.sendRedirect(request.getContextPath() + "/login");
@@ -82,7 +82,7 @@ public class CustomerServiceServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         String userType = (String) session.getAttribute("userType");
-        String empUser = (String) session.getAttribute("username");
+        String empSSN = (String) session.getAttribute("ssn");
         
         if (!"EMP_REP".equals(userType) && !"ADMIN".equals(userType)) {
             response.sendRedirect(request.getContextPath() + "/login");
@@ -101,7 +101,7 @@ public class CustomerServiceServlet extends HttpServlet {
         try {
             int questionId = Integer.parseInt(questionIdStr);
             
-            if (questionDAO.answerQuestion(questionId, answer.trim(), empUser)) {
+            if (questionDAO.answerQuestion(questionId, answer.trim(), empSSN)) {
                 session.setAttribute("success", "Question answered successfully!");
                 response.sendRedirect(request.getContextPath() + "/rep/customer-service");
             } else {
