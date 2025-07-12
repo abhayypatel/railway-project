@@ -81,11 +81,6 @@
                         </h5>
                     </div>
                     <div class="card-body">
-                        <p class="text-muted mb-3">
-                            Have a question about your reservation, train schedules, or our services? 
-                            Our customer service team is here to help!
-                        </p>
-                        
                         <form method="post" action="questions">
                             <input type="hidden" name="action" value="submit">
                             
@@ -93,9 +88,6 @@
                                 <label for="question" class="form-label">Your Question:</label>
                                 <textarea class="form-control" id="question" name="question" rows="4" 
                                           placeholder="Please describe your question or issue in detail..." required></textarea>
-                                <small class="form-text text-muted">
-                                    Be as specific as possible to help us provide the best answer.
-                                </small>
                             </div>
                             
                             <button type="submit" class="btn btn-primary">
@@ -209,9 +201,6 @@
                                 <div class="text-center py-5">
                                     <i class="fas fa-comments fa-3x text-muted mb-3"></i>
                                     <h5 class="text-muted">No Questions Yet</h5>
-                                    <p class="text-muted">
-                                        You haven't asked any questions yet. Use the form above to get help from our customer service team.
-                                    </p>
                                     <button type="button" class="btn btn-primary" onclick="document.getElementById('question').focus();">
                                         <i class="fas fa-plus-circle me-2"></i>Ask Your First Question
                                     </button>

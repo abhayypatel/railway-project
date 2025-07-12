@@ -241,8 +241,7 @@
         function showReservationDetails(reservationId) {
             document.getElementById('reservationDetails').innerHTML = 
                 '<p><strong>Reservation ID:</strong> #' + reservationId + '</p>' +
-                '<p>Complete reservation details are shown in the table above.</p>' +
-                '<p>For additional information or assistance, please contact customer service.</p>';
+                '<p>Complete reservation details are shown in the table above.</p>';
             new bootstrap.Modal(document.getElementById('reservationModal')).show();
         }
         
