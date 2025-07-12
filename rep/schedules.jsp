@@ -108,7 +108,7 @@
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-outline-primary me-1" 
                                                         data-bs-toggle="modal" data-bs-target="#editScheduleModal"
-                                                        onclick="populateEditForm('${schedule.line}', ${schedule.trainId}, '${schedule.origin}', '${schedule.dest}', '${schedule.deptTime}', '${schedule.arrivalTime}', ${schedule.travelTime}, ${schedule.stops}, ${schedule.fare})">
+                                                        onclick="populateEditForm('${schedule.line}', '${schedule.trainId}', '${schedule.origin}', '${schedule.dest}', '${schedule.deptTime}', '${schedule.arrivalTime}', '${schedule.travelTime}', '${schedule.stops}', '${schedule.fare}')">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </button>
                                                 <button type="button" class="btn btn-sm btn-outline-danger" 
@@ -154,17 +154,32 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="editTrainId" class="form-label">Train ID *</label>
-                                <input type="number" class="form-control" id="editTrainId" name="trainId" required>
+                                <select class="form-select" id="editTrainId" name="trainId" required>
+                                    <option value="">Select Train</option>
+                                    <c:forEach var="train" items="${trains}">
+                                        <option value="${train.trainId}">${train.trainId} - ${train.type} (${train.seats} seats)</option>
+                                    </c:forEach>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="editOrigin" class="form-label">Origin Station *</label>
-                                <input type="text" class="form-control" id="editOrigin" name="origin" required>
+                                <select class="form-select" id="editOrigin" name="origin" required>
+                                    <option value="">Select Origin Station</option>
+                                    <c:forEach var="station" items="${stationNames}">
+                                        <option value="${station}">${station}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="editDest" class="form-label">Destination Station *</label>
-                                <input type="text" class="form-control" id="editDest" name="dest" required>
+                                <select class="form-select" id="editDest" name="dest" required>
+                                    <option value="">Select Destination Station</option>
+                                    <c:forEach var="station" items="${stationNames}">
+                                        <option value="${station}">${station}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
                         </div>
                         <div class="row">

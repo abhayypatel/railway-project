@@ -2,7 +2,9 @@ package com.railway.servlet.rep;
 
 import com.railway.dao.TrainScheduleDAO;
 import com.railway.dao.TrainDAO;
+import com.railway.dao.StationDAO;
 import com.railway.model.TrainSchedule;
+import com.railway.model.Train;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +21,13 @@ public class RepScheduleServlet extends HttpServlet {
     
     private TrainScheduleDAO scheduleDAO;
     private TrainDAO trainDAO;
+    private StationDAO stationDAO;
     
     @Override
     public void init() throws ServletException {
         scheduleDAO = new TrainScheduleDAO();
         trainDAO = new TrainDAO();
+        stationDAO = new StationDAO();
     }
     
     @Override
@@ -41,6 +45,12 @@ public class RepScheduleServlet extends HttpServlet {
         try {
             List<TrainSchedule> schedules = scheduleDAO.getAllSchedules();
             request.setAttribute("schedules", schedules);
+            
+            List<Train> trains = trainDAO.getAllTrains();
+            request.setAttribute("trains", trains);
+            
+            List<String> stationNames = stationDAO.getStationNames();
+            request.setAttribute("stationNames", stationNames);
             
             String successMessage = (String) session.getAttribute("schedule_success");
             String errorMessage = (String) session.getAttribute("schedule_error");
@@ -111,6 +121,12 @@ public class RepScheduleServlet extends HttpServlet {
         
         try {
             int trainId = Integer.parseInt(trainIdStr);
+            
+            if (!trainDAO.trainExists(trainId)) {
+                session.setAttribute("schedule_error", "Train ID " + trainId + " does not exist. Available train IDs: 1001, 1002, 1003, 1004, 1005");
+                return;
+            }
+            
             int stops = Integer.parseInt(stopsStr);
             Time deptTime = Time.valueOf(deptTimeStr + ":00");
             Time arrivalTime = Time.valueOf(arrivalTimeStr + ":00");
