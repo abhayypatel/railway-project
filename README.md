@@ -9,6 +9,6 @@ https://drive.google.com/file/d/1LJkwXcUf3mRuCYvUKclUC6ueGoNfuD-L/view?usp=shari
 
 ## Demo Accounts
 
-Customer: user1 / password
-Employee: rep1 / rep123
+Customer: user1 / password\n
+Employee: rep1 / rep123\n
 Admin: admin / admin123
