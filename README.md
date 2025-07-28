@@ -1,7 +1,5 @@
 
-# Group 27 - Railway Project
-
-Group Members:  Abhay Patel, Spencer Mui, Justin Hwang, Krishna Lekhi
+# Railway Project
 
 ## Video Demo
 
